@@ -111,10 +111,13 @@ class Main_Frame(wx.Frame):
             # if no config found, create one with default values
             self.config.read(self.CONF_PATH)
             if self.config.sections() == []:
-                self.config['OSC'] = {'IP': '127.000.000.001',
-                                      'PORT': 7000,
-                                      'RESYNC_BAR_ADRESS': '/composition/tempocontroller/resync',
-                                      'BPM_ADRESS': '/composition/tempocontroller/tempo'}
+                self.config['OSC'] = {
+                    'IP': '127.000.000.001',
+                    'PORT': 7000,
+                    'RESYNC_BAR_ADRESS': '/composition/tempocontroller/resync',
+                    'BPM_ADRESS': '/composition/tempocontroller/tempo',
+                    'BPM_TICK_ADDRESS': '/beat/tick'
+                    }
                 self.config['AUDIO'] = {'device_index': '1'}
         except:
             if self.retrys > 0:
