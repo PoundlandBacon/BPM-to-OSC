@@ -116,7 +116,9 @@ class Main_Frame(wx.Frame):
                     'PORT': 7000,
                     'RESYNC_BAR_ADRESS': '/composition/tempocontroller/resync',
                     'BPM_ADRESS': '/composition/tempocontroller/tempo',
-                    'BPM_TICK_ADDRESS': '/beat/tick'
+                    'BPM_COUNT_ADDRESS': '/beat/count',
+                    'BPM_ONE_ADDRESS': '/beat/one',
+                    'BPM_TWO_ADDRESS': '/beat/two'
                     }
                 self.config['AUDIO'] = {'device_index': '1'}
         except:

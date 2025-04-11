@@ -93,8 +93,21 @@ class BeatDetector:
         if beat[0]:
             
             self.beat_counter += 1
-            beat_tick = (self.beat_counter % 4) * 0.25
-            self.client.send_osc(self.parent.config['OSC']['BPM_TICK_ADDRESS'], beat_tick)
+            beat_count = (self.beat_counter % 4)
+            self.client.send_osc(self.parent.config['OSC']['BPM_COUNT_ADDRESS'], beat_count)
+            if self.beat_counter % 4 == 0:
+                beat_one = 1 
+                self.client.send_osc(self.parent.config['OSC']['BPM_ONE_ADDRESS'], beat_one)
+            else:
+                beat_one = 0
+                self.client.send_osc(self.parent.config['OSC']['BPM_ONE_ADDRESS'], beat_one)
+            if self.beat_counter % 2 == 0:
+                beat_two = 1
+                self.client.send_osc(self.parent.config['OSC']['BPM_TWO_ADDRESS'], beat_two)
+            else:
+                beat_two = 0
+            self.client.send_osc(self.parent.config['OSC']['BPM_TWO_ADDRESS'], beat_two)
+
             # extract bpm
             self.bpm = round(self.tempo.get_bpm())
 
